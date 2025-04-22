@@ -24,7 +24,7 @@ source venv/bin/activate
 echo "تفعيل البيئة الافتراضية..."
 # تثبيت المتطلبات
 echo "تثبيت المتطلبات..."
-pip install selenium undetected-chromedriver pyautogui fake-useragent python-dotenv cryptography requests
+pip install undetected-chromedriver pyautogui fake-useragent python-dotenv cryptography requests selenium
 
 # إنشاء الدلائل اللازمة
 echo "إنشاء الدلائل اللازمة..."
