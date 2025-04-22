@@ -6,12 +6,25 @@ echo "بدء تثبيت نظام أتمتة تيك توك..."
 
 # إنشاء بيئة افتراضية
 echo "إنشاء بيئة افتراضية..."
-python3 -m venv venv
+if [ ! -d "venv" ]; then
+    echo "تثبيت Python 3.9..."
+    sudo apt-get update
+    sudo apt-get install python3.9 python3.9-venv -y
+else
+    echo "بيئة افتراضية موجودة بالفعل."
+fi
+# التحقق من وجود Python 3.9
+if ! command -v python3.9 &> /dev/null
+then
+    echo "Python 3.9 غير مثبت. يرجى تثبيته أولاً."
+    exit
+fi
+python3.9 -m venv venv
 source venv/bin/activate
 echo "تفعيل البيئة الافتراضية..."
 # تثبيت المتطلبات
 echo "تثبيت المتطلبات..."
-pip install selenium undetected-chromedriver pyautogui requests fake-useragent python-dotenv
+pip install selenium undetected-chromedriver pyautogui requests fake-useragent python-dotenv cryptography distutils
 
 # إنشاء الدلائل اللازمة
 echo "إنشاء الدلائل اللازمة..."
