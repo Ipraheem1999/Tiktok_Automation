@@ -3,25 +3,19 @@
 
 echo "بدء تثبيت نظام أتمتة تيك توك..."
 
-# التأكد من وجود Python
-if ! command -v python3 &> /dev/null; then
-    echo "خطأ: Python3 غير مثبت. الرجاء تثبيت Python3 أولاً."
-    exit 1
-fi
 
-# التأكد من وجود pip
-if ! command -v pip3 &> /dev/null; then
-    echo "خطأ: pip3 غير مثبت. الرجاء تثبيت pip3 أولاً."
-    exit 1
-fi
-
-# تثبيت المكتبات المطلوبة
-echo "تثبيت المكتبات المطلوبة..."
-pip3 install selenium undetected-chromedriver pyautogui requests fake-useragent python-dotenv
+# إنشاء بيئة افتراضية
+echo "إنشاء بيئة افتراضية..."
+python3 -m venv venv
+source venv/bin/activate
+echo "تفعيل البيئة الافتراضية..."
+# تثبيت المتطلبات
+echo "تثبيت المتطلبات..."
+pip install selenium undetected-chromedriver pyautogui requests fake-useragent python-dotenv
 
 # إنشاء الدلائل اللازمة
 echo "إنشاء الدلائل اللازمة..."
-mkdir -p logs config data videos cookies
+mkdir -m 777 -p logs config data videos cookies
 
 # تعيين صلاحيات التنفيذ للبرنامج الرئيسي
 echo "تعيين صلاحيات التنفيذ للبرنامج الرئيسي..."
